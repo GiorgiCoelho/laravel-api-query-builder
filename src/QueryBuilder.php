@@ -48,13 +48,13 @@ class QueryBuilder
 
     public function __construct(Model $model, Request $request)
     {
-        $this->orderBy = config('api-query-builder.orderBy');
+        $this->orderBy = config('laravel-api-query-builder.orderBy');
 
-        $this->limit = config('api-query-builder.limit');
+        $this->limit = config('laravel-api-query-builder.limit');
 
-        $this->excludedParameters = array_merge($this->excludedParameters, config('api-query-builder.excludedParameters'));
+        $this->excludedParameters = array_merge($this->excludedParameters, config('laravel-api-query-builder.excludedParameters'));
 
-        (count($this->extraParameters) == 0) ? array_merge($this->extraParameters, config('api-query-builder.extraParameters')) : "";
+        (count($this->extraParameters) == 0) ? array_merge($this->extraParameters, config('laravel-api-query-builder.extraParameters')) : "";
 
         $this->model = $model;
 
