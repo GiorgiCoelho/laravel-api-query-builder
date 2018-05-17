@@ -34,3 +34,9 @@ changing the $excludedParameters for $extraParameters.
 
 The $extraParameters is also included on config.php, so you can utilize it if you have a default value from a column that in every query to database you want to insert.
 .
+
+### Publish config file
+
+If you want to change default limit, orderBy and excludedParameters parameters, run this command on the terminal:
+
+php artisan vendor:publish --provider="Gfcd\Laravel\Api\ApiQueryBuilderServiceProvider"
