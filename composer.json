@@ -1,0 +1,31 @@
+{
+    "name": "gfcd/laravel-query-builder-api",
+    "description": "Laravel API Query Builder Package based on Gfcd/laravel-api-query-builder",
+    "keywords": [
+        "laravel",
+        "api",
+        "query",
+        "builder",
+        "query string"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giorgi Coelho",
+            "email": "giorgi_coelho@hotmail.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+        "illuminate/support": ">=5.0.0",
+        "illuminate/database": ">=5.0.0",
+        "illuminate/http": ">=5.0.0"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Gfcd\\Laravel\\Api\\": "src"
+        }
+    }
+}
