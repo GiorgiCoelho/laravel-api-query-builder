@@ -1,5 +1,7 @@
 # Laravel & Lumen API Query Builder Package
 
+composer require gfcd/laravel-query-builder-api
+
 ### English
 
 Laravel library based on https://github.com/selahattinunlu/laravel-api-query-builder.
