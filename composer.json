@@ -22,7 +22,6 @@
         "illuminate/database": ">=5.0.0",
         "illuminate/http": ">=5.0.0"
     },
-    "version": "v1.3.0",
     "require-dev": {},
     "autoload": {
         "psr-4": {
