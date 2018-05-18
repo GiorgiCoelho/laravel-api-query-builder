@@ -2,7 +2,7 @@
 
 composer require gfcd/laravel-query-builder-api
 
-### English
+### Intro
 
 Laravel library based on https://github.com/selahattinunlu/laravel-api-query-builder.
 
@@ -35,8 +35,17 @@ changing the $excludedParameters for $extraParameters.
 The $extraParameters is also included on config.php, so you can utilize it if you have a default value from a column that in every query to database you want to insert.
 .
 
+### Service Provider
+Add this line into config/app.php file's providers
+
+'Gfcd\Laravel\Api\ApiQueryBuilderServiceProvider'.
+
 ### Publish config file
 
 If you want to change default limit, orderBy and excludedParameters parameters, run this command on the terminal:
 
 php artisan vendor:publish --provider="Gfcd\Laravel\Api\ApiQueryBuilderServiceProvider"
+
+### Others
+
+All configurations can be followed using https://github.com/selahattinunlu/laravel-api-query-builder, just changing the 'Unlu' with 'Gfcd'.
