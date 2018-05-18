@@ -408,6 +408,11 @@ class QueryBuilder
         return (count($this->extraParameters) > 0);
     }
 
+    private function hasRelationMethods()
+    {
+        return (count($this->relationMethods) > 0);
+    }
+
     private function setterMethodName($key)
     {
         return 'set' . studly_case($key);
