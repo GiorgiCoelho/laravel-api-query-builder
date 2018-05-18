@@ -32,6 +32,8 @@ class QueryBuilder
 
     protected $relationColumns = [];
 
+    protected $relationMethods = [];
+
     protected $includes = [];
 
     protected $groupBy = [];
@@ -55,6 +57,8 @@ class QueryBuilder
         $this->excludedParameters = array_merge($this->excludedParameters, config('laravel-api-query-builder.excludedParameters'));
 
         (count($this->extraParameters) == 0) ? array_merge($this->extraParameters, config('laravel-api-query-builder.extraParameters')) : "";
+
+        (count($this->relationMethods) == 0) ? array_merge($this->relationMethods, config('laravel-api-query-builder.relationMethods')) : "";
 
         $this->model = $model;
 
@@ -85,6 +89,10 @@ class QueryBuilder
 
         if ($this->hasExtraParameters()) {
             array_map([$this, 'addExtraParametersToQuery'], $this->extraParameters);
+        }
+
+        if ($this->hasRelationMethods()) {
+            array_map([$this, 'addRelationParametersToQuery'], $this->relationMethods);
         }
 
         array_map([$this, 'addOrderByToQuery'], $this->orderBy);
@@ -324,6 +332,11 @@ class QueryBuilder
     {
         extract($parameter);
         $this->query->where($column, $operator, $value);
+    }
+
+    private function addRelationParametersToQuery($parameter)
+    {
+        $this->query->with($parameter);
     }
 
     private function applyCustomFilter($key, $operator, $value, $type = 'Basic')

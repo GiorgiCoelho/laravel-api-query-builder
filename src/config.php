@@ -10,4 +10,5 @@ return [
     ],
     'excludedParameters' => [],
     'extraParameters' => [],
+    'relationMethods' => []
 ];
