@@ -85,4 +85,4 @@ php artisan vendor:publish --provider="Gfcd\Laravel\Api\ApiQueryBuilderServicePr
 
 ### Others
 
-All configurations can be followed using [Unlu/laravel-api-query-builder](https://github.com/selahattinunlu/laravel-api-query-builder), just changing the 'Unlu' with 'Gfcd'.
+All configurations can be followed using [Unlu/laravel-api-query-builder](https://github.com/selahattinunlu/laravel-api-query-builder), just changing the 'Unlu' for 'Gfcd'.
