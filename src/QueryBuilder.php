@@ -65,6 +65,7 @@ class QueryBuilder
         $this->uriParser = new UriParser($request);
 
         $this->query = $this->model->newQuery();
+        
     }
 
     public function build()
