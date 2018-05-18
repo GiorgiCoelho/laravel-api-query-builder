@@ -4,7 +4,7 @@ composer require gfcd/laravel-query-builder-api
 
 ### Intro
 
-Laravel library based on https://github.com/selahattinunlu/laravel-api-query-builder.
+Laravel library based on [selahattinunlu library](https://github.com/selahattinunlu/laravel-api-query-builder.)
 
 This library added some modifications from selahattinunlu library.
 
@@ -62,7 +62,7 @@ $extraParameters = [
 This is helpful in cases where you have a project that uses User Auth, and you want to retrieve data from database based on user_id or whatever column that 
 you want to add on query.
 
-To use extraParameters, follow the steps on https://github.com/selahattinunlu/laravel-api-query-builder/wiki/9.-How-do-exclude-parameters-from-queries%3F,
+To use extraParameters, follow the steps on [Unlu/laravel-api-query-builder] (https://github.com/selahattinunlu/laravel-api-query-builder/wiki/9.-How-do-exclude-parameters-from-queries%3F),
 changing the $excludedParameters for $extraParameters.
 
 The $extraParameters is also included on config.php, so you can utilize it if you have a default value from a column that in every query to database you want to insert.
