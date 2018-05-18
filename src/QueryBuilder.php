@@ -55,10 +55,10 @@ class QueryBuilder
         $this->limit = config('laravel-api-query-builder.limit');
 
         $this->excludedParameters = array_merge($this->excludedParameters, config('laravel-api-query-builder.excludedParameters'));
+        
+        (count($this->extraParameters) == 0) ? $this->extraParameters = config('laravel-api-query-builder.extraParameters') : "";
 
-        (count($this->extraParameters) == 0) ? array_merge($this->extraParameters, config('laravel-api-query-builder.extraParameters')) : "";
-
-        (count($this->relationMethods) == 0) ? array_merge($this->relationMethods, config('laravel-api-query-builder.relationMethods')) : "";
+        (count($this->relationMethods) == 0) ? $this->relationMethods = config('laravel-api-query-builder.relationMethods') : "";
 
         $this->model = $model;
 
