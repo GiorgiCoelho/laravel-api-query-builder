@@ -8,17 +8,13 @@ Laravel library based on https://github.com/selahattinunlu/laravel-api-query-bui
 
 This library added some modifications from selahattinunlu library.
 
-1º:
-
-It was added the FILTER parameter on query string, so the columns are encapsulated inside a filter property.
+1. It was added the FILTER parameter on query string, so the columns are encapsulated inside a filter property.
 
 ```
 /api/users?filter={name=se*&age!=18}&order_by=age,asc&limit=2&columns=name,age,city_id&includes=city
 ```
 
-2º:
-
-On QueryBuilder.php, a new property was inserted. This property is called by $extraParameters, and receive an array of model's relationships. This will do eager load.
+2. On QueryBuilder.php, a new property was inserted. This property is called by $extraParameters, and receive an array of model's relationships. This will do eager load.
 
 ```
 class User {
@@ -49,9 +45,7 @@ class UserFilter extender QueryBuilder {
 }
 ```
 
-3º:
-
-On QueryBuilder.php, a new property was inserted. This property is called by $relationMethods, and receive an array of three properties:
+3. On QueryBuilder.php, a new property was inserted. This property is called by $relationMethods, and receive an array of three properties:
 
 ```
 $extraParameters = [
