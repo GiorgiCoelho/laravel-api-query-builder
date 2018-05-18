@@ -6,18 +6,54 @@ composer require gfcd/laravel-query-builder-api
 
 Laravel library based on https://github.com/selahattinunlu/laravel-api-query-builder.
 
-This library added two modifications from selahattinunlu library.
+This library added some modifications from selahattinunlu library.
 
 1º:
 
 It was added the FILTER parameter on query string, so the columns are encapsulated inside a filter property.
 
+```
 /api/users?filter={name=se*&age!=18}&order_by=age,asc&limit=2&columns=name,age,city_id&includes=city
+```
 
 2º:
 
-On QueryBuilder.php, a new property was inserted. This property is called by $extraParameters, and receive an array of three properties:
+On QueryBuilder.php, a new property was inserted. This property is called by $extraParameters, and receive an array of model's relationships. This will do eager load.
 
+```
+class User {
+    
+    public function addressList()
+    {
+        return $this->hasMany(Address::class);
+    }
+}
+```
+
+```
+class UserController {
+     public function index(Request $request)
+    {
+        $queryBuilder = new QueryBuilder(new User, $request);
+    
+        return response()->json([
+            'data' => $queryBuilder->build()->paginate()
+        ]);
+    }
+}
+```
+
+```
+class UserFilter extender QueryBuilder {
+    $relationMethods = ['addressList']
+}
+```
+
+3º:
+
+On QueryBuilder.php, a new property was inserted. This property is called by $relationMethods, and receive an array of three properties:
+
+```
 $extraParameters = [
     [
         "column" => "name of column that you want add on server side, not on client side."
@@ -25,6 +61,7 @@ $extraParameters = [
         "value" => "the value you want insert".
     ]
 ]
+```
 
 This is helpful in cases where you have a project that uses User Auth, and you want to retrieve data from database based on user_id or whatever column that 
 you want to add on query.
@@ -38,13 +75,17 @@ The $extraParameters is also included on config.php, so you can utilize it if yo
 ### Service Provider
 Add this line into config/app.php file's providers
 
+```
 'Gfcd\Laravel\Api\ApiQueryBuilderServiceProvider'.
+```
 
 ### Publish config file
 
 If you want to change default limit, orderBy and excludedParameters parameters, run this command on the terminal:
 
+```
 php artisan vendor:publish --provider="Gfcd\Laravel\Api\ApiQueryBuilderServiceProvider"
+```
 
 ### Others
 
