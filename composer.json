@@ -1,6 +1,6 @@
 {
     "name": "gfcd/laravel-query-builder-api",
-    "description": "Laravel API Query Builder Package based on Gfcd/laravel-api-query-builder",
+    "description": "Laravel API Query Builder Package based on Unlu/laravel-api-query-builder",
     "keywords": [
         "laravel",
         "api",
