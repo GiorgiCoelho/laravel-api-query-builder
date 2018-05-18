@@ -8,6 +8,8 @@ Laravel library based on https://github.com/selahattinunlu/laravel-api-query-bui
 
 This library added some modifications from selahattinunlu library.
 
+### Functionalities Added
+
 1. It was added the FILTER parameter on query string, so the columns are encapsulated inside a filter property.
 
 ```
