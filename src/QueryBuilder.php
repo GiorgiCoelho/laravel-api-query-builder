@@ -98,10 +98,14 @@ class QueryBuilder
 
     public function applyDefaultFilters($filters) {
         array_map([$this, 'addDefaultFiltersToQuery'], $filters);
+
+        return $this;
     }
 
     public function applyDefaultRelationships($relationships) {
         array_map([$this, 'addRelationParametersToQuery'], $relationships);
+
+        return $this;
     }
 
     public function get()
@@ -343,7 +347,7 @@ class QueryBuilder
     {
         extract($filter);
 
-        if(!$operator)
+        if(!array_key_exists("operator", $filter))
             $operator = "=";
 
         $this->query->where($column, $operator, $value);
