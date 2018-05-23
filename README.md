@@ -53,6 +53,8 @@ class UserController {
 
 class UserController {
 
+    //eq: you can ommit operator, by default is "=" 
+
     private $extraParameters = [
         [
             "column" => "name of column that you want add on server side, not on client side."
