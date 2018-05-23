@@ -8,7 +8,5 @@ return [
             'direction' => 'desc'
         ]
     ],
-    'excludedParameters' => [],
-    'extraParameters' => [],
-    'relationMethods' => []
+    'excludedParameters' => []
 ];

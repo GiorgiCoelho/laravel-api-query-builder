@@ -87,14 +87,6 @@ class QueryBuilder
             $this->query->skip($this->offset);
         }
 
-        if ($this->hasExtraParameters()) {
-            array_map([$this, 'addExtraParametersToQuery'], $this->extraParameters);
-        }
-
-        if ($this->hasRelationMethods()) {
-            array_map([$this, 'addRelationParametersToQuery'], $this->relationMethods);
-        }
-
         array_map([$this, 'addOrderByToQuery'], $this->orderBy);
 
         $this->query->with($this->includes);
@@ -102,6 +94,14 @@ class QueryBuilder
         $this->query->select($this->columns);
 
         return $this;
+    }
+
+    public function applyDefaultFilters($filters) {
+        array_map([$this, 'addDefaultFiltersToQuery'], $filters);
+    }
+
+    public function applyDefaultRelationships($relationships) {
+        array_map([$this, 'addRelationParametersToQuery'], $relationships);
     }
 
     public function get()
@@ -339,6 +339,16 @@ class QueryBuilder
         $this->query->with($parameter);
     }
 
+    private function addDefaultFiltersToQuery($filter)
+    {
+        extract($filter);
+
+        if(!$operator)
+            $operator = "=";
+
+        $this->query->where($column, $operator, $value);
+    }
+
     private function applyCustomFilter($key, $operator, $value, $type = 'Basic')
     {
         $callback = [$this, $this->customFilterName($key)];
@@ -401,16 +411,6 @@ class QueryBuilder
         $methodName = $this->customFilterName($key);
 
         return (method_exists($this, $methodName));
-    }
-
-    private function hasExtraParameters()
-    {
-        return (count($this->extraParameters) > 0);
-    }
-
-    private function hasRelationMethods()
-    {
-        return (count($this->relationMethods) > 0);
     }
 
     private function setterMethodName($key)
